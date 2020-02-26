@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Netlify HERE</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div id="app">
+		<h2>Netlify HERE Demo</h2>
+		<p>
+			This app demonstrates using HERE services via serverless functions hosted on a static site. Enter a starting
+			destination and final destination in the fields below. The app will then find the weather at both locations
+			as well as determine a route between them.
+		</p>
+
+		<form>
+			<p>
+			<label for="start">Starting Location:</label>
+			<input type="text" v-model="start" id="start">
+			</p>
+
+			<p>
+			<label for="end">End Location:</label>
+			<input type="text" v-model="end" id="end">
+			</p>
+				
+			<p>
+				<button @click.prevent="generateData">Get Weather and Route</button>
+			</p>
+		</form>
+
+		<p>Debug: {{ weatherStart }}, {{ weatherEnd }}
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
