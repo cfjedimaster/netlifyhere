@@ -32,7 +32,28 @@
 			</p>
 		</form>
 
-		<p>Debug: {{ weatherStart }}, {{ weatherEnd }}
+		<div v-if="loading">
+			<p><i>I'm gathering your data now, please stand by!</i></p>
+		</div><div v-else-if="hasResult">
+			<h2>Results</h2>
+			<p>
+				The weather at your starting location is <b>{{ weatherStart.description }}</b> 
+				with a low of {{ weatherStart.lowTemperature }} and a high of {{ weatherStart.highTemperature }}.
+			</p>
+			<p>
+				The weather at your destination is <b>{{ weatherEnd.description }}</b> 
+				with a low of {{ weatherEnd.lowTemperature }} and a high of {{ weatherEnd.highTemperature }}.
+			</p>
+			<p>
+
+				Your route will take {{ summary.duration | formatSeconds }} and cover {{ summary.length | formatDistance }}:
+
+				<ul>
+					<li v-for="step in steps">{{step.instruction}}</li>
+				</ul>
+			</p>
+		</div>
+
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
